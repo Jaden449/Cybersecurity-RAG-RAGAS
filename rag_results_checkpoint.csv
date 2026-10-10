@@ -1,0 +1,491 @@
+variant,query_id,query,generated_guideline,generation_time_s,retrieval_time_s
+naive,N01,How should we handle spear-phishing attempts in a mid-sized enterprise?,"**Guideline 1:** Implement tiered email security consisting of a Secure Email Gateway (SEG), a cloud email security platform, and Endpoint Detection and Response (EDR). (Source: NIST SP 800-61r2 + SANS)
+
+**Guideline 2:** Deploy Domain-based Message Authentication, Reporting & Conformance (DMARC) at the ""p=reject"" policy level for all owned domains. (Source: NIST SP 800-61r2 + SANS)
+
+**Guideline 3:** Establish a dedicated phishing response team with clear escalation paths and integrate phishing Indicators of Compromise (IOCs) from sector-specific ISAC into email gateway blocklists within 15 minutes of receipt. (Source: NIST SP 800-61r2 + SANS)",15.49011588,0.020709038
+naive,N02,What email authentication protocols should we implement to prevent domain spoofing?,"**Guideline 1:** Ensure proper configuration of DMARC records to prevent email spoofing. (Source: Rowden/CybersecurityQAA)
+**Guideline 2:** Implement SPF and DKIM alongside DMARC for enhanced domain protection against spoofing. (Source: Rowden/CybersecurityQAA)
+**Guideline 3:** Audit all owned domains, including inactive ones, for common email authentication misconfigurations such as SPF with +all, missing DMARC records for subdomains, and DKIM keys shorter than 1024 bits. (Source: CISA Email Security Guidance 2023)",10.98548627,0.041949034
+naive,N03,What are the immediate containment steps when phishing credential compromise is confirmed?,"**Guideline 1:** Block the phishing sender IP and domain at email gateway and firewall. Quarantine all copies of the phishing email organization-wide. Disable compromised accounts. Isolate affected endpoints. (Source: NIST SP 800-61r2 Section 3.3)
+
+**Guideline 2:** Immediately disable and then reset passwords for all potentially affected accounts. (Source: NIST SP 800-61r2 Section 3.3)
+
+**Guideline 3:** If not already enabled, enable Multi-Factor Authentication (MFA) on all affected accounts. (Source: NIST SP 800-61r2 Section 3.3)",11.97941327,0.019268036
+naive,N04,How can we improve phishing detection using threat intelligence feeds?,"**Guideline 1:** Subscribe to phishing-specific feeds such as Phishtank, OpenPhish, and APWG eCrime feeds (Source: Recorded Future — Phishing Intelligence)
+
+**Guideline 2:** Monitor dark web forums and marketplaces for credential dumps affecting your domain using HaveIBeenPwned Enterprise API (Source: Recorded Future — Phishing Intelligence)
+
+**Guideline 3:** Consume feeds from CISA Alerts and Advisories, FS-ISAC, and sector-specific ISACs, and integrate them using open standards like STIX/TAXII (Source: STIX/TAXII Threat Intelligence Sharing)",11.59511828,0.019199371
+naive,N05,What MFA approach best protects against AiTM phishing attacks?,"**Guideline 1:** Implement phishing-resistant MFA such as FIDO2/WebAuthn hardware security keys or platform authenticators for all accounts to protect against Adversary-in-the-Middle (AiTM) phishing attacks. (Source: CISA MFA Guide 2022)
+
+**Guideline 2:** Deploy FIDO2 hardware tokens for privileged and remote access users as part of a multi-phase MFA implementation strategy. (Source: CISA MFA Implementation Guide 2023)
+
+**Guideline 3:** Enforce FIDO2 for all administrative interfaces to further secure critical systems against AiTM phishing attacks. (Source: CISA MFA Implementation Guide 2023)",12.8689487,0.019111633
+naive,N06,How should we structure security awareness training to reduce phishing click rates?,"**Guideline 1:** Incorporate real-world examples of phishing emails into the training program to help employees recognize potential attacks. (Source: Source 1)
+
+**Guideline 2:** Teach employees methods to identify phishing attempts, including checking email sender's authenticity, verifying links before clicking, and being cautious about providing sensitive information. (Source 1)
+
+**Guideline 3:** Emphasize the importance of reporting suspected phishing emails to IT or security teams so they can remove potential threats from inboxes and enhance overall defense systems. (Source 1)",9.81071043,0.019533157
+naive,N07,What post-incident review process should we follow after a phishing-related breach?,"**Guideline 1:** Conduct a post-incident review meeting within 2 weeks of incident closure to discuss what happened, performance of the IR process, missing information, adherence to procedures, potential improvements, and additional controls that could have prevented or detected the incident faster. (Source: NIST SP 800-61r2 Section 3.6)
+
+**Guideline 2:** Document findings from the post-incident review in a risk register and translate them into action items with assigned owners. (Source: NIST SP 800-61r2 Section 3.6)
+
+**Guideline 3:** Implement immediate measures such as restoring systems from clean backups, re-imaging endpoints where malware was confirmed, forcing password resets for all affected accounts, enabling MFA on all affected accounts if not already enabled, and restoring affected services in a monitored phased manner. Monitor recovered systems intensively for 30 days. (Source: NIST SP 800-61r2 Section 3.5)",17.10603976,0.020427704
+naive,N08,How do we defend against business email compromise targeting our finance team?,"**Guideline 1:** Train finance team members to recognize suspicious emails requesting financial transactions or sensitive data, and verify the authenticity of such requests. (Source: Rowden/CybersecurityQAA - Expert-validated cybersecurity advisory QA)
+
+**Guideline 2:** Implement DMARC to help reduce spam and phishing activities specifically targeting the finance team's email accounts. (Source: Rowden/CybersecurityQAA - Expert-validated cybersecurity advisory QA)
+
+**Guideline 3:** Use a spam-filtering tool and malware scanning at the email gateway to minimize the number of malicious emails and attachments that reach the finance team's inboxes. (Source: Rowden/CybersecurityQAA - Expert-validated cybersecurity advisory QA)",13.91394854,0.019809723
+naive,N09,What regulatory notification requirements apply when phishing leads to a data breach?,"**Guideline 1:** Notify the relevant supervisory authority within 72 hours of becoming aware of a personal data breach due to phishing, as per GDPR Article 33 (Source: GDPR Article 33)
+
+**Guideline 2:** Document all phishing incidents, regardless of whether they cross the notification threshold, in a breach register (Source: NIST SP 800-61r2 + GDPR Art 32)
+
+**Guideline 3:** Implement documented procedures for reporting information security events, including phishing-related breaches, in accordance with ISO 27001 A.5.28 (Source: ISO 27001 A.5.28)",11.83352995,0.019065142
+naive,N10,How should we configure Microsoft 365 to maximise phishing protection?,"**Guideline 1:** Enable Microsoft Defender for Office 365 Plan 2, including anti-phishing policies with impersonation protection, safe links, and safe attachments. Configure these policies to protect all owned domains. (Source: CIS CIS-CAT Benchmark)
+
+**Guideline 2:** Set the action for detected phishing emails to quarantine messages. (Source: CIS CIS-CAT Benchmark)
+
+**Guideline 3:** Enable mailbox intelligence for impersonation detection within Microsoft 365. (Source: CIS CIS-CAT Benchmark)",10.30435324,0.019468546
+naive,N11,What are the key indicators to include in SIEM rules for phishing detection?,"**Guideline 1:** Configure SIEM rules to alert on emails with urgent language requesting credential input, mismatched sender display names and email addresses, links with domain lookalikes, unexpected attachments especially Office documents with macros, emails from newly registered domains, and excessive BCC recipients. (Source: NIST SP 800-61r2)
+
+**Guideline 2:** Deploy Sigma rules in SIEM that detect emails with suspicious attachment types such as .exe, .vbs, .bat, .ps1, emails subject lines containing urgent financial language, new accounts accessing email clients from previously unseen IP, process spawning from Outlook.exe or similar email clients, and emails from domains registered within 30 days. (Source: MITRE ATT&CK Detection Analytics & Elastic SIEM Detection Rules)
+
+**Guideline 3:** Implement machine learning-based anomaly detection in SIEM to identify unusual email volume, attachment type frequency, sender domain age, homoglyph domain usage, and temporal clustering patterns to improve coverage beyond rule-based approaches. (Source: Elastic SIEM Detection Rules)",18.69134617,0.018763781
+naive,N12,How do we configure DMARC to enforce rejection of spoofed emails?,"**Guideline 1:** Implement a DMARC policy with ""p=reject"" to instruct receiving servers to discard unauthenticated emails. (Source: CISA Phishing Guidance 2023)
+
+**Guideline 2:** Monitor DMARC aggregate reports weekly to identify legitimate email streams failing authentication before tightening the policy further. (Source: M3AAWG DMARC Guide)
+
+**Guideline 3:** Ensure proper alignment configuration for third-party email services to enforce DMARC rejection of spoofed emails. (Source: M3AAWG DMARC Guide)",9.861751318,0.018173695
+naive,N13,What are best practices for sandboxing email attachments before delivery?,"**Guideline 1:** Implement dynamic email attachment sandboxing that analyzes files for process execution behavior, network calls, registry modifications, and file system changes. (Source: NIST SP 800-61r2 + CIS)
+
+**Guideline 2:** Scan email attachments at the gateway to detect and block common file types associated with spear-phishing attacks such as .doc, .xls, .pdf, .zip, and .exe. Disable macros by default. (Source: MITRE ATT&CK T1566.001)
+
+**Guideline 3:** Use multi-engine analysis and machine learning in the sandbox solution to improve detection rates and adapt to new sandbox evasion techniques. (Source: NIST SP 800-61r2 + CIS)",13.44424438,0.018189669
+naive,N14,How should we handle a confirmed ransomware infection delivered via phishing?,"**Guideline 1:** Immediately isolate the affected endpoints from the network while preserving volatile memory for forensic analysis. (Source: CISA Ransomware Guide — Phishing Containment)
+
+**Guideline 2:** Turn off internet access immediately to prevent the spread of the malware and protect other devices or systems. (Source: Cybersecurity-Dataset-v1)
+
+**Guideline 3:** Disconnect the infected device from the network, format or replace disk drives, update the operating system and software, install and run antivirus software, and monitor the network for further infections. (Source: CybersecurityQAA)",10.60125923,0.018125772
+naive,N15,What phishing-specific IR playbook components should we include?,"**Guideline 1:** Establish a phishing-specific IR playbook that includes trigger criteria, initial triage checklist, severity classification matrix, evidence collection procedures, containment decision tree, and communication templates. (Source: Source 1)
+
+**Guideline 2:** Automate key actions within the phishing-specific IR playbook using a SOAR platform, such as email quarantine, IOC extraction, threat intelligence enrichment, IP and domain blocking, and user notification. (Source: Source 3)
+
+**Guideline 3:** Prepare for phishing incidents by creating an IR policy and plan, forming a Computer Security Incident Response Team (CSIRT), defining communication trees, pre-positioning forensic tools, and establishing relationships with Internet Service Providers (ISPs) and law enforcement. (Source: Source 2)",13.5395062,0.018194914
+naive,N16,How do we protect against QR code phishing that bypasses email gateway scanning?,"**Guideline 1:** Train users to verify destinations before scanning QR codes. (Source: ENISA Threat Landscape 2023)
+
+**Guideline 2:** Implement Mobile Device Management (MDM) policies to control QR code usage and enforce security measures. (Source: ENISA Threat Landscape 2023)
+
+**Guideline 3:** In addition to email filtering solutions, consider implementing QR code scanner solutions with URL scanning capabilities to detect and block potential phishing links. (Implication derived from both sources)",9.337195158,0.019690514
+naive,N17,What forensic steps are needed when analysing a phishing email header?,"**Guideline 1:** Examine the Received headers chain, Return-Path vs From address discrepancies, X-Originating-IP, Message-ID format anomalies, and Authentication-Results (SPF, DKIM, DMARC outcomes) (Source: SANS FOR508 Course)
+
+**Guideline 2:** Analyze email headers to identify the sending infrastructure (Source: NIST SP 800-61r2)
+
+**Guideline 3:** Query threat intelligence platforms for known Indicators of Compromise (IOCs) (Source: NIST SP 800-61r2)",10.67874932,0.018095255
+naive,N18,How should we implement URL rewriting and time-of-click analysis?,"**Guideline 1:** Configure URL rewriting and time-of-click analysis to rewrite ALL URLs in emails for effective detection of late-stage URL weaponization (Source: SANS Reading Room: Secure Email Configuration)
+
+**Guideline 2:** Implement URL sandboxing to detonate links in a virtual environment and block links that exhibit malicious behavior during the time of click (Source: SANS Reading Room: Secure Email Configuration)
+
+**Guideline 3:** Refer to the OWASP Testing Guide for further insights on timing analysis and template-based attacks to enhance understanding and implementation of these techniques (Source: AlicanKiraz0/Cybersecurity-Dataset-v1)",11.6518681,0.019824743
+naive,N19,What metrics should we track to measure phishing programme effectiveness?,"**Guideline 1:** Implement a maturity level system for the phishing program, starting with documented policies, quarterly simulations, and a formal IR playbook (Source: ENISA Guidelines on Assessing DS Security)
+
+**Guideline 2:** Monitor key metrics such as click rate, credential submission rate, and report rate during phishing simulations to assess user susceptibility (Source: SANS Phishing Pen Test Methodology)
+
+**Guideline 3:** Track Mean Time to Detect (MTTD), Mean Time to Contain (MTTC), number of accounts compromised, number of users who clicked phishing links, number of users who submitted credentials, dwell time before detection, and cost of incidents to evaluate phishing incident response effectiveness (Source: SANS Incident Metrics)",12.48913169,0.018795967
+naive,N20,How do we defend against supply chain phishing from a compromised vendor?,"**Guideline 1:** Implement email filtering rules to flag unusual communication patterns from established vendors. (Source: CISA Alert: Supply Chain Phishing)
+
+**Guideline 2:** Maintain a vendor communication baseline to identify deviations that may indicate compromise. (Source: CISA Alert: Supply Chain Phishing)
+
+**Guideline 3:** Require out-of-band verification for any unusual vendor requests to confirm their authenticity. (Source: CISA Alert: Supply Chain Phishing)",8.687391758,0.017845154
+naive,N21,What is the recommended approach for OAuth phishing in Microsoft 365?,"**Guideline 1:** Enable anti-phishing policies with impersonation protection, safe links, and safe attachments in Microsoft Defender for Office 365 Plan 2. (Source: CIS CIS-CAT Benchmark)
+
+**Guideline 2:** Review and remove malicious inbox rules and OAuth app grants after detecting a phishing incident. (Source: Microsoft DART Incident Response Playbooks)
+
+**Guideline 3:** Examine OAuth application authorizations and email forwarding rules during credential compromise assessment following a phishing click event. (Source: CISA Alert AA23-187A)",10.59158921,0.018377304
+naive,N22,How should we configure Google Workspace to protect against phishing?,"**Guideline 1:** Enable Enhanced Safe Browsing in Chrome, configure Gmail advanced phishing and malware protection, and enable Gmail confidential mode for sensitive communications (Source: Google Workspace Security Best Practices)
+
+**Guideline 2:** Use Google Workspace Alert Centre for real-time phishing incident notifications (Source: Google Workspace Security Best Practices)
+
+**Guideline 3:** Review and revoke suspicious third-party application authorizations from the Admin Console under Security > API Controls (Source: Google Workspace Security Response)",9.005544186,0.018333197
+naive,N23,What STIX/TAXII threat intelligence should we consume for phishing defence?,"**Guideline 1:** Subscribe to phishing-specific feeds such as Phishtank, OpenPhish, and APWG eCrime feeds. (Source: Recorded Future — Phishing Intelligence)
+
+**Guideline 2:** Consume feeds from CISA AIS, FS-ISAC, and sector-specific ISACs. (Source: STIX/TAXII Threat Intelligence Sharing)
+
+**Guideline 3:** Share phishing-related STIX objects in STIX 2.1 format via TAXII 2.1 servers with partner organizations and sector ISACs for community-wide blocking. (Source: STIX 2.1 — Phishing IOC Structure)",12.03466296,0.018696785
+naive,N24,How do we implement a phishing simulation programme for employees?,"**Guideline 1:** Implement realistic phishing simulations that evolve in complexity over time, based on the current threat landscape (Source: ENISA Phishing Awareness Guidelines)
+
+**Guideline 2:** Conduct regular management reviews of the phishing programme, incorporating simulation results, incident statistics, feedback, and changes in threats and vulnerabilities (Source: ISO 27001:2022 — Management Review)
+
+**Guideline 3:** Utilize educational resources like CyberSprinters materials, including games and activities, to teach employees how to identify suspicious messages (Source: Rowden/CybersecurityQAA — Expert-validated cybersecurity advisory QA)",11.18353367,0.018834352
+naive,N25,What are the steps for credential compromise assessment after a phishing click?,"**Guideline 1:** Review Azure AD sign-in logs, check for sign-ins from unfamiliar IPs or geographies, and examine email forwarding rules. (Source: CISA Alert AA23-187A)
+
+**Guideline 2:** Identify all recipients via email gateway logs and check for users who clicked and potentially submitted credentials. (Source: NIST SP 800-61r2 + CISA)
+
+**Guideline 3:** Examine OAuth application authorizations and review mailbox delegates. (Source: CISA Alert AA23-187A)",10.40706682,0.017894506
+naive,N26,How should we handle whaling attacks targeting our executive leadership team?,"**Guideline 1:** Implement multi-factor authentication for all executive accounts to increase account protection. (Source: Source 1)
+
+**Guideline 2:** Train executives on recognizing phishing attempts and the importance of not clicking suspicious links or opening unverified attachments. (Source: Implied from Question and Context)
+
+**Guideline 3:** Have an incident response plan in place to swiftly identify, isolate, and investigate any successful whaling attacks, including notifying relevant stakeholders and conducting a thorough post-incident analysis. (Source: Adapted from Source 3)",9.489743948,0.018501043
+naive,N27,What network monitoring should we implement to detect phishing-related C2 callbacks?,"**Guideline 1:** Implement network traffic analysis for Command and Control (C2) callbacks using a Security Information and Event Management (SIEM) system. (Source: NIST CSF 2.0 - Detect Function)
+
+**Guideline 2:** Configure the SIEM system with use cases for email-based attack patterns that include C2 callbacks. (Source: NIST CSF 2.0 - Detect Function)
+
+**Guideline 3:** Analyze HTTP/HTTPS connections in proxy/web gateway logs following email link clicks for potential C2 callbacks. (Source: Context from multiple sources)",10.17512321,0.018701792
+naive,N28,How do we protect against HTML smuggling techniques used in phishing campaigns?,"**Guideline 1:** Sanitize untrusted data before inserting it into HTML tags to prevent HTML smuggling techniques. Use libraries like DOMPurify to enforce strict rules for allowed elements and attributes. (Source: AlicanKiraz0/Cybersecurity-Dataset-v1)
+
+**Guideline 2:** Ensure that all properties used in scripts are read-only or carefully validated before usage to mitigate DOM Clobbering, a common technique in HTML smuggling attacks. (Source: AlicanKiraz0/Cybersecurity-Dataset-v1)
+
+**Guideline 3:** Educate employees on identifying potential phishing emails by examining sender details, subject lines, and logos. Encourage skepticism towards generic greetings, poor grammar, and hyperlinks. Verify the authenticity of links by hovering over them and avoid clicking attachments. (Source: Rowden/CybersecurityQAA)",15.45632553,0.018245935
+naive,N29,What eradication steps are needed after phishing-related malware is confirmed?,"**Guideline 1:** Remove malware from all affected endpoints using Endpoint Detection and Response (EDR) tools, delete malicious persistence mechanisms, revoke unauthorized OAuth application grants, remove attacker-created accounts, eliminate malicious email forwarding rules and delegates, and clear browser-stored credentials on affected machines. (Source: NIST SP 800-61r2 Section 3.4)
+
+**Guideline 2:** Re-image endpoints where malware was confirmed, force password resets for all affected accounts, enable Multi-Factor Authentication (MFA) on all affected accounts if not already enabled, and restore affected services in a monitored phased manner. (Source: NIST SP 800-61r2 Section 3.5)
+
+**Guideline 3:** Validate the eradication by running a full antivirus scan on all endpoints that received the phishing email, verifying all identified malicious scheduled tasks, registry keys, and startup items have been removed, confirming no remaining unauthorized OAuth application grants, verifying no outstanding email forwarding rules or delegates, and confirming password resets completed for all affected accounts and MFA is enabled on all affected accounts. (Source: SANS Recovery Playbook)",20.56033087,0.019197226
+naive,N30,How should SMEs defend against phishing given limited security staff?,"**Guideline 1:** Use a cloud email provider with built-in phishing protection, such as Microsoft 365 Business Premium or Google Workspace. (Source: ENISA SME Security Guide)
+
+**Guideline 2:** Enable Multi-Factor Authentication (MFA) on all accounts to add an extra layer of security. (Source: Rowden/CybersecurityQAA - Expert-validated cybersecurity advisory QA)
+
+**Guideline 3:** Conduct regular phishing awareness training for employees to help them recognize potential phishing attacks. (Source: Rowden/CybersecurityQAA - Expert-validated cybersecurity advisory QA)",10.97777224,0.01796627
+naive,N31,What are the NIST SP 800-63B guidelines for phishing-resistant authentication?,"**Guideline 1:** Deploy multi-factor authentication (MFA) for user accounts, which helps protect against phishing attacks. (Source: Microsoft Entra ID - Conditional Access for MFA)
+
+**Guideline 2:** Implement phishing-resistant MFA for privileged users within a 12-month period, starting from the initial phishing defense implementation. (Source: SANS Critical Security Controls - Implementation)
+
+**Guideline 3:** Ensure that MFA is enforced across all critical systems and applications, closing most credential phishing attack paths. (Source: Microsoft Entra ID - Conditional Access for MFA)",10.438586,0.017608166
+naive,N32,How do we measure the maturity of our organisation phishing defence programme?,"**Guideline 1:** Evaluate the maturity level of your organization's phishing defense programme using the four levels defined by the ENISA Guidelines on Assessing DS Security: Initial, Developing, Defined, Managed, and Optimizing [Source 1].
+
+**Guideline 2:** Regularly conduct phishing simulations, document policies, implement a formal Incident Response (IR) playbook, deploy DMARC, and adopt a metrics-driven approach to enhance the maturity of your programme [Source 1].
+
+**Guideline 3:** Incorporate a continuous improvement loop by simulating phishing scenarios, measuring results, providing training, and making improvements based on these cycles [Source 2]. Additionally, consider the recommendations from Gartner's Phishing Resilience Programme to treat phishing as a business risk, measure and report metrics at the executive level, invest in both human and technical layers, and implement a feedback mechanism for continuous improvement [Source 2].",15.59834409,0.018031359
+naive,N33,What are the privacy considerations when investigating a phishing incident involving employee email?,"**Guideline 1:** Ensure that any collection and analysis of employee email activity during an investigation complies with applicable privacy laws and is pre-authorized in employment agreements and privacy policies. (Source: NIST SP 800-61r2 + Privacy)
+
+**Guideline 2:** Consult with the Data Protection Officer in GDPR jurisdictions before accessing email content during an investigation. (Source: NIST SP 800-61r2 + Privacy)
+
+**Guideline 3:** Document and communicate clear privacy policies regarding employee email monitoring during investigations to maintain transparency and trust within the organization. (Implication derived from NIST SP 800-61r2 + Privacy)",11.15841746,0.018959761
+naive,N34,How should we respond when thread hijacking phishing is identified in our email logs?,"**Guideline 1:** Review email gateway logs, proxy/web gateway logs, and endpoint EDR telemetry for details about the thread hijacking phishing attempt (Source: Source 2 & Source 3)
+
+**Guideline 2:** Educate users on identifying thread hijacking phishing attempts by examining the email's content for signs of legitimate sender, non-alarmist tone, and high-quality logos (Source: Source 1)
+
+**Guideline 3:** Implement immediate actions for affected users, such as changing passwords, checking for unauthorized device logins, enabling MFA, and reporting the incident to the IT service provider and relevant authorities (Source: Source 3)",11.09490538,0.018115759
+advanced,A01,What SPF record configuration prevents email spoofing from our domain?,"**Guideline 1:** Publish SPF records with a -all (fail) policy. (Source: NIST SP 800-177r1)
+
+**Guideline 2:** Ensure that your domain has properly configured DMARC records. (Source: Rowden/CybersecurityQAA)
+
+**Guideline 3:** Implement both SPF and DKIM along with DMARC for stronger protection against email spoofing. (Source: Rowden/CybersecurityQAA)",8.283699036,0.042143106
+advanced,A02,How do we set up DKIM key rotation and monitoring in our email infrastructure?,"**Guideline 1:** Rotate DKIM keys annually. (Source: Source 1, Source 2)
+**Guideline 2:** Monitor DKIM key rotation and verify correct functioning through DMARC reports. (Source: Source 1)
+**Guideline 3:** Implement a schedule to check DKIM key status every three months. (Source: Adapted from Source 3)",6.467024088,0.041725636
+advanced,A03,What Conditional Access policies in Microsoft Entra ID reduce phishing risk?,"**Guideline 1:** Require phishing-resistant MFA for all administrators (Source: Microsoft Entra ID - Conditional Access for MFA)
+**Guideline 2:** Require MFA for all users when signing in from outside corporate networks (Source: Microsoft Entra ID - Conditional Access for MFA)
+**Guideline 3:** Configure sign-in risk policies to require MFA step-up for medium and high risk sign-in events (Source: Microsoft Entra ID - Conditional Access for MFA)",8.551262856,0.041821957
+advanced,A04,How should we detect credential harvesting via adversary-in-the-middle proxy tools?,"**Guideline 1:** Monitor network traffic for patterns of automated credential guessing requests across multiple systems or services. (Source: AlicanKiraz0/Cybersecurity-Dataset-v1)
+
+**Guideline 2:** Review email gateway logs to identify potential victims of credential harvesting phishing incidents. (Source: NIST SP 800-61r2 + CISA)
+
+**Guideline 3:** Implement enhanced monitoring for suspicious low-velocity attacks on web applications that mimic normal user behavior. (Source: AlicanKiraz0/Cybersecurity-Dataset-v1)",10.43085289,0.040646315
+advanced,A05,What are best practices for deploying FIDO2 hardware tokens across an enterprise?,"**Guideline 1:** Deploy TOTP/push MFA as a baseline protection for all users, then gradually transition to FIDO2 hardware tokens for privileged and remote access users (Source: CISA MFA Implementation Guide 2023)
+
+**Guideline 2:** Select FIDO2-certified tokens like YubiKey 5 NFC that are compatible with both mobile and desktop devices for wider application compatibility (Source: CISA Phishing-Resistant Controls)
+
+**Guideline 3:** Register at least two FIDO2 keys per user (a primary and backup key), establish secure key distribution procedures, define key loss/theft response procedures, maintain an organizational inventory, and test FIDO2 authentication across all target applications before rollout (Source: CISA Phishing-Resistant Controls)",13.76565123,0.041911364
+advanced,A06,How do we integrate phishing IOCs from MISP into our email gateway blocklists?,"**Guideline 1:** Set up an integration between MISP and your email gateway to automatically import phishing-specific feeds. (Source: MISP Threat Sharing Platform)
+
+**Guideline 2:** Incorporate phishing IOCs received from MISP into your email gateway blocklist within your system. (Source: MISP Threat Sharing Platform)
+
+**Guideline 3:** Regularly update your MISP instance connections to ensure you receive timely phishing IOCs from trusted communities and national CERT feeds. (Source: MISP Threat Sharing Platform)",10.09058356,0.043409348
+advanced,A07,What Windows forensic artifacts should we collect during a phishing incident investigation?,"**Guideline 1:** Collect Prefetch files, browser history and cache, recent files in Office trust records, and Windows Event Log ID 4624/4625 for evidence related to phishing incidents. (Source: SANS FOR508 — Digital Forensics and IR)
+
+**Guideline 2:** Examine Shimcache and Amcache for application execution tracking during a phishing incident investigation. (Source: SANS FOR508 — Digital Forensics and IR)
+
+**Guideline 3:** Search for scheduled task registry keys to identify potential persistence established post-compromise. (Source: SANS FOR508 — Digital Forensics and IR)",11.39550829,0.043928385
+advanced,A08,How should we configure Microsoft Defender for Office 365 impersonation protection?,"**Guideline 1:** Enable Microsoft Defender for Office 365 Plan 2, which includes impersonation protection, safe links, and safe attachments. (Source: CIS CIS-CAT Benchmark — M365)
+
+**Guideline 2:** Configure anti-phishing policies to protect all owned domains for impersonation detection. (Source: CIS CIS-CAT Benchmark — M365)
+
+**Guideline 3:** Set action for detected phishing to quarantine the message within the anti-phishing policies. (Source: CIS CIS-CAT Benchmark — M365)",10.72591877,0.042304277
+advanced,A09,What SOAR playbook automation reduces mean time to contain a phishing campaign?,"**Guideline 1:** Implement automated phishing response playbooks using SOAR platforms that include email quarantine, IOC extraction, automatic threat intelligence enrichment, IP and domain blocking at firewall and DNS, and user notification (Source: SANS Phishing Response Best Practices)
+
+**Guideline 2:** Adopt a tiered containment approach with automated email quarantine, URL blocking, and IOC extraction (Tier 1) (Source: CISA MS-ISAC Phishing Playbook)
+
+**Guideline 3:** Utilize SOAR solutions to streamline security operations processes, reducing Mean Time To Contain (MTTC) by automating repetitive tasks such as phishing incident response workflows (Source: AlicanKiraz0/Cybersecurity-Dataset-v1)",13.29136801,0.042550564
+advanced,A10,How do we assess the severity of a phishing incident using ENISA classification criteria?,"**Guideline 1:** Evaluate the scope, data sensitivity, operational impact, and legal/regulatory implications of the phishing incident to determine its severity according to ENISA classification criteria (Source: ENISA Incident Classification)
+
+**Guideline 2:** Use a severity classification matrix that considers user interaction, data type, and scope to classify the incident as Critical, High, Medium, or Low (Source: NIST SP 800-61r2)
+
+**Guideline 3:** Respond within the specified time frame based on the severity level: Critical - 2-hour response, High - 4-hour response, Medium - 24-hour response, Low - 72-hour response (Source: ENISA Incident Classification)",13.06585979,0.043313265
+advanced,A11,What tabletop exercise scenarios best prepare IR teams for phishing-related incidents?,"**Guideline 1:** Conduct tabletop exercises simulating executive Business Email Compromise (BEC), credential-harvesting campaigns, ransomware delivered via phishing, and supply chain phishing via a compromised vendor email. (Source: CIS Controls v8 - Control 17)
+
+**Guideline 2:** Incorporate scenarios such as financial loss due to a phishing incident involving the CFO, ransomware attacks initiated through phishing attachments affecting multiple endpoints, and state-sponsored spear-phishing leading to data exfiltration into the training exercises. (Source: CISA Incident Response Training)
+
+**Guideline 3:** Establish and test IR plans annually, including a phishing-specific IR playbook outlining steps for triage, evidence collection, scoping, containment, and post-incident review. (Source: NIST SP 800-61r2)",15.69932938,0.041493654
+advanced,A12,How should we handle session cookie theft following an AiTM phishing attack?,"**Guideline 1:** Implement phishing-resistant Multi-Factor Authentication (MFA) such as FIDO2 to prevent Adversary-in-the-Middle (AiTM) phishing attacks from bypassing MFA. (Source: Microsoft Security Blog 2023)
+
+**Guideline 2:** Monitor for impossible travel login events and configure session lifetime policies to minimize the impact of session cookie theft. (Source: Microsoft Security Blog 2023)
+
+**Guideline 3:** Use Conditional Access policies that re-authenticate users based on risk signals, especially when unusual sign-in activities, new device connections, or new OAuth app authorizations are detected. (Source: MITRE ATT&CK — Credential Access T1539)",12.8433032,0.041662931
+advanced,A13,What NIST SP 800-53 controls apply to phishing prevention in federal systems?,"**Guideline 1:** Deploy malware protection at email entry points with automatic signature updates. (Source: NIST SP 800-53 Rev 5 - SI-3)
+**Guideline 2:** Monitor email systems for indicators of attack. (Source: NIST SP 800-53 Rev 5 - SI-4)
+**Guideline 3:** Implement email gateway at network boundary. (Source: NIST SP 800-53 Rev 5 - SC-7)",8.568852663,0.042357683
+advanced,A14,How do we configure email gateways to detect homoglyph lookalike domain attacks?,"**Guideline 1:** Implement Homoglyph Detection (D3-HD) in email filtering systems to identify lookalike domain attacks. (Source: MITRE D3FEND — Email Filtering)
+
+**Guideline 2:** Monitor for sudden increases in emails from newly registered domains (aged less than 30 days) as potential homoglyph lookalike domain attacks. (Source: Elastic SIEM Detection Rules — Phishing)
+
+**Guideline 3:** Combine Homoglyph Detection with DNS spoofing detection mechanisms to enhance the ability to bypass domain reputation checks and evade spam filters. (Source: AlicanKiraz0/Cybersecurity-Dataset-v1)",11.82899356,0.044206381
+advanced,A15,What should our phishing incident containment decision matrix include?,"**Guideline 1:** Include automated actions such as email quarantine, URL blocking, IOC extraction, and IP/domain blocking at email gateway and firewall (Source: CISA MS-ISAC Phishing Playbook)
+
+**Guideline 2:** Implement analyst-driven actions like account review, endpoint isolation decision, and threat intelligence enrichment (Source: CISA MS-ISAC Phishing Playbook)
+
+**Guideline 3:** Consider long-term containment strategies including resetting passwords for all potentially affected accounts, revoking and reissuing authentication tokens, and patching exploited vulnerabilities (Source: NIST SP 800-61r2)",11.19126749,0.042301655
+advanced,A16,How should healthcare organisations prioritise phishing-resistant MFA deployment?,"**Guideline 1:** Initiate deployment of TOTP/push MFA for all users as baseline protection against credential phishing (Source: CISA MFA Implementation Guide 2023)
+
+**Guideline 2:** Prioritize deployment of FIDO2 hardware tokens for privileged and remote access users (Source: CISA MFA Implementation Guide 2023)
+
+**Guideline 3:** Enforce FIDO2 for all administrative interfaces to further secure sensitive data and operations (Source: CISA MFA Implementation Guide 2023)",9.665310144,0.04289794
+advanced,A17,What are the CISA Cybersecurity Performance Goals for email security?,"**Guideline 1:** Deploy DMARC with a monitoring (p=none) policy within 6 months, then progress to enforcement within 12 months. (Source: CISA Cybersecurity Performance Goals for Email Security)
+
+**Guideline 2:** Enable anti-phishing controls in email platforms. (Source: CISA Cybersecurity Performance Goals for Email Security)
+
+**Guideline 3:** Conduct phishing awareness training. (Source: CISA Cybersecurity Performance Goals for Email Security)",8.574011803,0.04259491
+advanced,A18,How do we validate DMARC aggregate reports to identify authentication failures?,"**Guideline 1:** Review DMARC aggregate reports using a DMARC reporting tool such as Dmarcian or EasyDMARC. (Source: CIS Microsoft 365 Foundations Benchmark v3.0)
+
+**Guideline 2:** Analyze the data in the DMARC aggregate reports to identify legitimate email streams that are failing authentication. (Source: M3AAWG DMARC Guide)
+
+**Guideline 3:** Monitor DMARC aggregate reports weekly to track authentication failures over time and adjust policies accordingly. (Source: CISA Phishing Guidance 2023)",10.08378577,0.04144454
+advanced,A19,What application whitelisting controls prevent macro malware execution from phishing emails?,"**Guideline 1:** Implement application whitelisting to block malicious payload execution, specifically for Office macros. This can be done by configuring Office apps to only allow digitally signed macros and restricting macro execution to trusted locations. (Source: Rowden/CybersecurityQAA)
+
+**Guideline 2:** Configure endpoint protection to scan email attachments, including Office macros, for potential threats. (Source: ISO 27001:2022 Annex A.8.7)
+
+**Guideline 3:** Consider configuring Office to only allow digitally signed macros. This helps prevent unauthorized macro execution from phishing emails. (Source: Rowden/CybersecurityQAA)",11.88925552,0.041870356
+advanced,A20,How should we document containment actions for ISO 27001 compliance during a phishing incident?,"**Guideline 1:** Log the time the phishing email was blocked or recalled, accounts disabled, and network blocks applied, along with responsible personnel and approvals. Preserve this evidence in a forensically sound manner. (Source: ISO 27001:2022 Annex A.5.26)
+
+**Guideline 2:** Document the results of annual testing of the complete phishing incident lifecycle from detection through recovery. (Source: ISO 27035:2023)
+
+**Guideline 3:** In addition to short-term containment measures such as blocking the phishing sender IP and domain, quarantining emails, disabling compromised accounts, and isolating affected endpoints, also implement long-term containment strategies like resetting passwords for affected accounts, revoking and reissuing authentication tokens, and patching exploited vulnerabilities. (Source: NIST SP 800-61r2)",15.63721728,0.040654182
+advanced,A21,What passive DNS monitoring can detect phishing infrastructure before campaigns launch?,"**Guideline 1:** Analyze outbound DNS queries for unusual patterns to identify potential phishing infrastructure reuse. (Source: AlicanKiraz0/Cybersecurity-Dataset-v1)
+
+**Guideline 2:** Monitor DNS queries for recently registered domains that may be associated with typosquatted phishing sites. (Source: MITRE ATT&CK Detection Guidance T1566)
+
+**Guideline 3:** Examine phishing kits to gather intelligence about attacker infrastructure, targets, and operational patterns, which can help proactively block emerging phishing campaigns. (Source: SANS CTI Summit — Phishing TI)",11.33596277,0.043333292
+advanced,A22,How do we build a phishing-resilient remote workforce policy?,"**Guideline 1:** Treat phishing as a business risk and establish a phishing resilience program that includes training, culture development, and technical controls like VPN/ZTNA, managed device compliance checks, secure DNS filtering, and CASB for monitoring (Gartner — Phishing Resilience Programme)
+
+**Guideline 2:** Prepare an incident response plan specifically for phishing incidents, including a phishing-specific IR playbook, communication trees, and relationships with ISPs and law enforcement (NIST SP 800-61r2)
+
+**Guideline 3:** Regularly simulate phishing attacks, measure results, train employees, and continuously improve the phishing resilience program (Gartner — Phishing Resilience Programme)",12.66676903,0.042031765
+advanced,A23,What SEC cybersecurity disclosure obligations arise from a material phishing breach?,"**Guideline 1:** Publicly traded companies must disclose a material phishing breach within 4 business days of determining its materiality according to SEC Cybersecurity Disclosure Rules 2023 (Source: SEC Cybersecurity Disclosure Rules 2023)
+
+**Guideline 2:** The annual report should describe the company's cybersecurity risk management processes, board oversight of cybersecurity, and management's role in assessing cybersecurity risk, including phishing-related incidents that constitute material breaches (Source: SEC Cybersecurity Disclosure Rules 2023)
+
+**Guideline 3:** Maintain records of all phishing-related incidents, even if they do not meet the notification threshold, for potential future reference or audits (Source: NIST SP 800-61r2 + GDPR Art 32)",13.99395299,0.03817749
+advanced,A24,How should we implement zero trust principles to limit blast radius after credential phishing?,"**Guideline 1:** Implement DMARC and sender reputation checks for all emails, including those from internal sources, to validate their authenticity. (Source: Zero Trust Architecture — NIST SP 800-207)
+
+**Guideline 2:** Use micro-segmentation to limit lateral movement within the network after a credential phishing incident. (Source: Zero Trust Architecture — NIST SP 800-207)
+
+**Guideline 3:** Configure Privileged Identity Management (PIM) to grant just-in-time privileged access, minimizing the blast radius of executive account phishing. (Source: Microsoft Azure Security Centre)",11.00700474,0.04197073
+advanced,A25,What are the steps to recover email service after ransomware delivered via phishing?,"**Guideline 1:** Verify backup integrity before attempting recovery. Immediately disconnect affected endpoints from the network, then restore data from offline backups that cannot be reached by ransomware (Source: CISA Ransomware Guide - Phishing Containment)
+
+**Guideline 2:** Run a full antivirus scan on all endpoints that received the phishing email to ensure complete removal of the malware (Source: SANS Recovery Playbook)
+
+**Guideline 3:** Configure endpoint protection to scan email attachments and implement application whitelisting to prevent future phishing-delivered malware infections (Source: ISO 27001:2022 Annex A.8.7)",12.05808592,0.040248632
+advanced,A26,How do we configure BIMI to strengthen brand email authentication trust signals?,"**Guideline 1:** Implement a valid DMARC policy with either 'quarantine' or 'reject' setting to enable BIMI for branded emails. (Source: NIST SP 800-177r1)
+
+**Guideline 2:** Ensure that your organization's email system is compliant with DMARC before implementing BIMI. (Source: Implied from NIST SP 800-177r1)
+
+**Guideline 3:** To minimize the risk of executive account phishing, consider configuring Privileged Identity Management (PIM) for just-in-time privileged access within your cloud environment. (Source: Microsoft Azure Security Centre)",11.38086796,0.043678284
+advanced,A27,What phishing kit analysis techniques reveal attacker infrastructure reuse patterns?,"**Guideline 1:** Analyze the contents of phishing kits to identify targeted brands and credential exfiltration endpoints, which may indicate reuse of attacker infrastructure. (Source: SANS CTI Summit — Phishing TI)
+
+**Guideline 2:** Examine attacker operational patterns within phishing kits, such as bot blocking and geofencing techniques, to spot recurring tactics that suggest infrastructure reuse. (Source: SANS CTI Summit — Phishing TI)
+
+**Guideline 3:** Monitor the use of known infrastructure identified through email headers during phishing incidents, as repeated appearances could signify reuse of attacker infrastructure. (Source: NIST SP 800-61r2 Section 3.2)",12.69799495,0.042509079
+advanced,A28,How should we integrate CISA AIS threat intelligence feeds into our phishing defences?,"**Guideline 1:** Subscribe to CISA AIS threat intelligence feeds for phishing defense. (Source: STIX/TAXII Threat Intelligence Sharing)
+
+**Guideline 2:** Incorporate CISA AIS alerts and advisories into your phishing defense strategy, focusing on nation-state phishing campaigns. (Source: Recorded Future — Phishing Intelligence)
+
+**Guideline 3:** Coordinate with other organizations within your sector by sharing CISA AIS-provided IOCs through sector-specific ISACs during phishing incidents. (Source: NIST SP 800-61r2 Section 2.4)",11.16401291,0.042342424
+advanced,A29,What are the common email authentication misconfigurations that leave domains vulnerable?,"**Guideline 1:** Check for SPF records with +all (pass all), which can disable SPF protection. (Source: CISA Email Security Guidance 2023)
+
+**Guideline 2:** Ensure DMARC p=none is not used without monitoring reports, as it provides no protection against phishing. (Source: CISA Email Security Guidance 2023)
+
+**Guideline 3:** Audit all owned domains, including inactive ones, for missing DMARC records for subdomain domains. (Source: CISA Email Security Guidance 2023)",10.21517277,0.040642738
+advanced,A30,How do we use MITRE D3FEND countermeasures to address T1566 phishing techniques?,"**Guideline 1:** Implement Email Filtering (D3-EF) to filter out potential phishing emails. (Source: MITRE D3FEND)
+**Guideline 2:** Use Sender Reputation Analysis (D3-SRA) to analyze the sender's reputation and detect potential phishing attempts. (Source: MITRE D3FEND)
+**Guideline 3:** Perform Homoglyph Detection (D3-HD) to identify lookalike domains that may be used in phishing attacks. (Source: MITRE D3FEND) Additionally, consider File Analysis (D3-FA) for attachment sandboxing to further secure against phishing threats. (Source: MITRE D3FEND)",11.69761348,0.043672562
+advanced,A31,What evidence preservation steps are required for legally admissible phishing forensics?,"**Guideline 1:** Log phishing incidents with timestamps, responsible personnel, and approvals, including details such as the time the phishing email was blocked or recalled, accounts disabled, and network blocks applied. Preserve this evidence in a forensically sound manner before remediation. (Source: ISO 27001:2022 Annex A.5.26)
+
+**Guideline 2:** Establish a phishing-specific Incident Response (IR) playbook that includes procedures for triage, evidence collection, scoping, containment, and post-incident review. This playbook should be maintained and regularly updated. (Source: NIST SP 800-61r2 Section 2)
+
+**Guideline 3:** Ensure compliance with forensics controls by documenting policy statements, implementation evidence, testing records, and management sign-off. Provide third-party auditors with access to legal admissibility and memory forensics as evidence of compliance. (Source: NIST SP 800-86 — Digital Forensics)",17.45761681,0.042770624
+advanced,A32,How should we assess and manage phishing risk under ISO 27001 Clause 6?,"**Guideline 1:** Conduct a risk assessment considering the likelihood of a phishing attack, impact of credential compromise or malware infection, and effectiveness of existing controls (Source: ISO 27001:2022 Clause 6)
+
+**Guideline 2:** Regularly review phishing program performance using simulation results, incident statistics, changes to threats and vulnerabilities, audit findings, and employee feedback (Source: ISO 27001:2022 — Management Review)
+
+**Guideline 3:** Test the complete phishing incident lifecycle from detection through recovery annually and document test results (Source: ISO 27035:2023 — Information Security Incident Management)",11.65145659,0.0423522
+advanced,A33,What are the incident response steps for phishing targeting industrial control systems?,"**Guideline 1:** Establish an Incident Response Policy and Plan specifically for phishing incidents targeting Industrial Control Systems (Source: NIST SP 800-61r2)
+
+**Guideline 2:** Implement a tiered containment approach, including automated measures like email quarantine and URL blocking, analyst-driven actions such as account review and endpoint isolation decisions, and escalation procedures when necessary (Source: CISA MS-ISAC Phishing Playbook)
+
+**Guideline 3:** Ensure heightened awareness training for OT operators and implement network segmentation, restricted internet access for OT systems, and specific incident response playbooks for OT/ICS compromise to mitigate the risk of ransomware impacting safety-critical systems (Source: SANS ICS Security — Phishing in OT Environments)",13.47078323,0.040721178
+modular,M01,How do we implement a phishing defence maturity model for board-level reporting?,"**Guideline 1:** Establish a phishing defence programme with documented policies, quarterly simulations, and a formal incident response playbook. Deploy DMARC as a basic control (Level 3 - Defined). (Source: ENISA Guidelines on Assessing DS Security)
+
+**Guideline 2:** Conduct an initial baseline assessment to understand the current state of phishing defences. Deploy DMARC at p=none and establish a phishing report button. (Source: SANS Critical Security Controls — Implementation)
+
+**Guideline 3:** Implement a multi-layered defence strategy including email filtering services, employee training, device updates, and DMARC to prevent domain spoofing. (Source: Rowden/CybersecurityQAA - Expert-validated cybersecurity advisory QA)",13.59781313,0.107574224
+modular,M02,What are the key indicators of a BEC attack and how should we respond immediately?,"**Guideline 1:** Implement multi-person approval for wire transfers to reduce vulnerability to Business Email Compromise attacks. (Source: CISA AA22-279A)
+
+**Guideline 2:** Establish anomaly detection mechanisms on financial request emails to identify potential BEC attempts. (Source: CISA AA22-279A)
+
+**Guideline 3:** Verify all financial transactions through out-of-band communication methods, independent of email communication, to prevent BEC attacks. (Source: FBI IC3 BEC Alert 2023)",9.620341539,0.119969368
+modular,M03,How should we build a 12-month phishing defence implementation roadmap?,"**Guideline 1:** Initiate a baseline assessment followed by deploying DMARC at p=none and establishing a phishing report button within the first two months (Source: SANS Critical Security Controls — Implementation)
+
+**Guideline 2:** Conduct regular phishing simulations, deliver targeted training to clickers, and implement a continuous improvement loop (simulate, measure, train, improve) (Source: Gartner — Phishing Resilience Programme)
+
+**Guideline 3:** Incorporate a multi-layered defence strategy including email filtering services, employee training, device updates, and domain protection through DMARC (Source: Rowden/CybersecurityQAA — Expert-validated cybersecurity advisory)",11.96228909,0.097290993
+modular,M04,What cloud email migration security considerations affect phishing defence posture?,"**Guideline 1:** Update phishing simulation target email addresses to cloud platform addresses and conduct a phishing simulation within 30 days post-migration to validate security posture. (Source: CISA Cloud Security Technical Reference Architecture)
+
+**Guideline 2:** Maintain and update DMARC, DKIM, and SPF records during and after migration. (Source: CISA Cloud Security Technical Reference Architecture)
+
+**Guideline 3:** Subscribe to a free DMARC monitoring service for continuous phishing protection. (Source: ENISA SME Security Guide)",9.578298807,0.095138788
+modular,M05,How do we deploy phishing-resistant MFA in phases across a large organisation?,"**Guideline 1:** Initiate the MFA deployment by implementing TOTP/push MFA for all users as a baseline protection against credential phishing (Source: CISA MFA Implementation Guide 2023)
+
+**Guideline 2:** In phase 2, deploy FIDO2 hardware tokens such as YubiKey 5 Series or Google Titan for privileged and remote access users (Source: CISA MFA Implementation Guide 2023)
+
+**Guideline 3:** Followed by that, enforce FIDO2 for all administrative interfaces (Source: CISA MFA Implementation Guide 2023). Additionally, during months 9-10, deploy phishing-resistant MFA for privileged users according to the SANS Critical Security Controls implementation roadmap (Source: SANS Critical Security Controls — Implementation)",14.83882642,0.120666265
+modular,M06,What GDPR obligations arise from phishing incidents that expose personal data?,"**Guideline 1:** Maintain a breach register documenting all phishing incidents, regardless of whether they cross the notification threshold (Source: NIST SP 800-61r2 + GDPR Art 32)
+
+**Guideline 2:** Ensure pre-authorised investigation powers for collecting and analyzing employee email activity during an investigation, as per applicable privacy laws (Source: NIST SP 800-61r2 + Privacy)
+
+**Guideline 3:** Consult the Data Protection Officer when accessing email content in GDPR jurisdictions during a phishing incident response (Source: NIST SP 800-61r2 + GDPR Art 32)",11.533113,0.116803885
+modular,M07,How should we configure Azure AD Identity Protection for phishing-related risk detection?,"**Guideline 1:** Enable Azure AD Identity Protection for automated risk-based Conditional Access. (Source: Microsoft Azure Security Centre — Email Protection)
+
+**Guideline 2:** Configure Azure AD Identity Protection to detect sign-in risk events, compromised account activities, and suspicious login patterns related to potential phishing attempts. (Source: Microsoft Azure Security Centre — Email Protection)
+
+**Guideline 3:** Set up notifications or alerts for high-risk events detected by Azure AD Identity Protection to facilitate prompt investigation and remediation actions. (Source: Microsoft Azure Security Centre — Email Protection)",9.500740051,0.107645035
+modular,M08,What threat hunting playbook should we use to proactively identify phishing campaigns?,"**Guideline 1:** Hunt for emails delivered from newly observed sender domains within the first 30 days, correlate email link clicks with subsequent DNS queries for the same domain, and identify endpoints with macro execution or script interpreter spawned from Office processes. (Source: MITRE ATT&CK — T1566 Analytics)
+
+**Guideline 2:** Automate email quarantine upon report, IOC extraction from phishing email, automatic threat intelligence enrichment, IP and domain blocking at firewall and DNS, and user notification. (Source: SANS Phishing Response Best Practices)
+
+**Guideline 3:** Implement a tiered containment approach that includes automated email quarantine, URL blocking, IOC extraction, account review, endpoint isolation decision, and threat intelligence enrichment. (Source: CISA MS-ISAC Phishing Playbook)",14.40622211,0.112939596
+modular,M09,How do we validate that eradication of phishing-related malware is complete?,"**Guideline 1:** Run a full antivirus scan on all endpoints that received the phishing email and verify all identified malicious scheduled tasks, registry keys, and startup items have been removed. (Source: SANS Recovery Playbook)
+
+**Guideline 2:** Revoke any unauthorized OAuth application grants and remove attacker-created accounts. (Source: NIST SP 800-61r2)
+
+**Guideline 3:** Verify no remaining malicious email forwarding rules or delegates exist and ensure Multi-Factor Authentication (MFA) is enabled on all affected accounts. (Source: SANS Recovery Playbook & NIST SP 800-61r2)",11.67842555,0.110057116
+modular,M10,What are the financial sector specific phishing defence requirements from FS-ISAC guidance?,"**Guideline 1:** Subscribe to FS-ISAC for sector-specific phishing threat intelligence. (Source: ENISA Good Practice Guide — Financial Sector)
+
+**Guideline 2:** Deploy advanced Business Email Compromise (BEC)-specific email controls that analyze email context and flag payment-related requests from external senders. (Source: ENISA Good Practice Guide — Financial Sector)
+
+**Guideline 3:** Participate in BEC-specific tabletop exercises involving finance and executive teams annually. (Source: ENISA Good Practice Guide — Financial Sector)",9.461717129,0.118021965
+modular,M11,How should we integrate phishing risk into enterprise risk management under NIST CSF 2.0?,"**Guideline 1:** Include phishing risk in the risk register with quantified impact and likelihood. (Source: Source 1)
+
+**Guideline 2:** Integrate phishing risk into the enterprise risk management process. (Source: Source 1 & Source 2)
+
+**Guideline 3:** Establish a phishing risk policy signed by senior leadership and include phishing KPIs in executive dashboards. (Source: Source 2)",7.327504396,0.115143776
+modular,M12,What email security controls are recommended for AWS-hosted workloads?,"**Guideline 1:** Enable CloudTrail logging for all AWS management actions including email service configuration changes, and verify the configuration quarterly through audits. (Source: AWS Security — Email Security for Cloud Workloads)
+
+**Guideline 2:** Use Amazon SES with DMARC, DKIM, and SPF correctly configured for outbound email, and scan all emails for malware and malicious URLs before delivery. (Source: AWS Security — Email Security for Cloud Workloads, CIS Controls v8 — Control 9)
+
+**Guideline 3:** Implement AWS GuardDuty for threat detection including credential compromise indicators, and assess cloud provider security controls for email services. (Source: AWS Security — Email Security for Cloud Workloads, ISO 27002:2022 — Section 5.23)",13.49229789,0.103470802
+modular,M13,How do we respond to a W-2 phishing attack targeting our HR department?,"**Guideline 1:** Isolate the affected systems immediately to prevent further spread of the W-2 phishing attack. (Source: Source 2)
+
+**Guideline 2:** Investigate the scope of the attack to understand its impact on HR data. (Source: Source 2)
+
+**Guideline 3:** Implement stricter financial verification procedures independent of email communication to prevent future W-2 phishing attacks. (Source: Source 3)",7.440060139,0.125169277
+modular,M14,What password manager controls reduce susceptibility to credential submission on phishing pages?,"**Guideline 1:** Use a password manager that autofills credentials only on the correct domain, providing a technical barrier against credential submission on phishing pages. (Source: NIST SP 800-63B)
+
+**Guideline 2:** Implement Multi-Factor Authentication (MFA) with phishing-resistant methods such as FIDO2/WebAuthn hardware security keys or platform authenticators for all accounts. (Source: CISA MFA Guide 2022)
+
+**Guideline 3:** Utilize a password manager to prevent credential reuse, which reduces susceptibility to phishing attacks. (Source: ENISA SME Security Guide)",11.19119072,0.11949563
+modular,M15,How should we implement SIEM use cases for detecting phishing-related anomalous mailbox access?,"**Guideline 1:** Implement email volume anomaly detection in SIEM, such as monitoring sudden increases in emails to finance teams (Source: Elastic SIEM Detection Rules)
+
+**Guideline 2:** Configure SIEM to detect unusual .iso or .img file attachments in emails (Source: Elastic SIEM Detection Rules)
+
+**Guideline 3:** Set up SIEM to identify emails from newly registered domains (domains registered within 30 days) as potential phishing threats (Source: Elastic SIEM Detection Rules)",9.099661589,0.118755817
+modular,M16,What are the Sigma rules recommended for detecting phishing-related process execution?,"**Guideline 1:** Configure Sigma rules to monitor for process spawning from Outlook.exe or similar email clients. (Source: Source 1)
+
+**Guideline 2:** Implement Sigma rules to detect new scheduled tasks created shortly after an email attachment is opened. (Source: Source 2)
+
+**Guideline 3:** Set up Sigma rules to alert when Office documents with macros are executed, particularly those with unexpected attachments. (Source: Source 3)",7.827695847,0.101354837
+modular,M17,How do we conduct a phishing resilience assessment aligned with CISA RRA methodology?,"**Guideline 1:** Conduct Phishing Simulation Exercises to measure susceptibility to phishing attacks. Utilize CISA's Phishing Campaign Assessment (PCA) as part of the organization's phishing program. (Source: Source 2)
+
+**Guideline 2:** Implement a tested system rebuild procedure to minimize downtime and data loss in case of a successful phishing attack. This process should be maintained according to the recommendations provided by the Ransomware Readiness Assessment (RRA). (Source: Source 1)
+
+**Guideline 3:** Engage CISA's free Ransomware Readiness Assessment (RRA) tool to follow a structured assessment framework for improving organizational resilience against phishing-delivered ransomware. (Source: Source 1)",13.2446723,0.112392902
+modular,M18,What Conditional Access policies block legacy authentication protocols exploited in phishing?,"**Guideline 1:** Block legacy authentication protocols that do not support Multi-Factor Authentication (MFA), such as basic auth, POP3, and IMAP, using Conditional Access policies. (Source: Microsoft Entra ID — Conditional Access for MFA)
+
+**Guideline 2:** Implement phishing-resistant MFA methods, like FIDO2, to protect against Adversary-in-the-Middle (AiTM) phishing attacks that bypass traditional MFA. (Source: Microsoft Security Blog 2023)
+
+**Guideline 3:** Require compliant devices for access to sensitive applications to prevent session cookie theft via phishing. (Source: Microsoft Entra ID — Conditional Access for MFA)",12.33373785,0.107707977
+modular,M19,How should we structure incident communications during a large-scale phishing campaign?,"**Guideline 1:** Establish an Incident Management Team consisting of an Incident Manager, Lead Analyst, Forensics Analyst, Communications Lead, Legal/Privacy Counsel, and HR Representative (if necessary). One individual can fulfill multiple roles, but legal responsibilities should be clearly assigned. (Source: NIST SP 800-61r2 + IR Framework)
+
+**Guideline 2:** Share Indicators of Compromise (IOCs) such as phishing URLs, sender IPs, and attachment hashes with sector-specific Information Sharing and Analysis Centers (ISACs), the CISA report portal, and threat intelligence platforms. Ensure legal and privacy teams review IOC-sharing agreements to comply with data protection regulations. (Source: NIST SP 800-61r2 Section 2.4)
+
+**Guideline 3:** During phishing incident communication, prioritize internal and external messaging through the Communications Lead, providing clear instructions about the incident, steps to take, and contact information for further assistance. (Source: NIST SP 800-61r2 + IR Framework)",18.60957956,0.096606016
+modular,M20,What are the operational technology phishing risks and mitigations for critical infrastructure?,"**Guideline 1:** Implement network segmentation between IT and OT networks to isolate critical infrastructure systems. (Source: SANS ICS Security — Phishing in OT Environments)
+
+**Guideline 2:** Provide heightened awareness training for OT operators to recognize phishing attempts and their potential impacts on safety-critical systems. (Source: SANS ICS Security — Phishing in OT Environments)
+
+**Guideline 3:** Employ advanced email filtering technologies to detect suspicious content and multi-factor authentication for critical OT systems. Regularly conduct penetration testing exercises focusing on social engineering to identify vulnerabilities in human defenses. (Source: AlicanKiraz0/Cybersecurity-Dataset-v1)",12.3938024,0.111454248
+modular,M21,How do we implement NIST SP 800-184 cyber recovery planning for email service resilience?,"**Guideline 1:** Document recovery objectives (RTO/RPO) for email service restoration. (Source: NIST SP 800-184)
+
+**Guideline 2:** Prioritize critical email systems in the recovery sequence. (Source: NIST SP 800-184)
+
+**Guideline 3:** Test recovery procedures for email systems regularly. (Source: NIST SP 800-184)",7.503927946,0.127340078
+modular,M22,What governance framework should we use to assign accountability for email security controls?,"**Guideline 1:** Establish a phishing risk policy signed by senior leadership, assigning accountability for email security controls (Source: NIST Cybersecurity Framework 2.0)
+
+**Guideline 2:** Assign named executive accountability for email security program performance (Source: NIST Cybersecurity Framework 2.0)
+
+**Guideline 3:** Select metrics aligned with organizational risk management priorities and governance objectives to measure the effectiveness of email security controls and identify areas for improvement (Source: Rowden/CybersecurityQAA - Expert-validated cybersecurity advisory QA)",9.986349106,0.107543707
+modular,M23,How should we configure DLP policies to detect data exfiltration via email after phishing?,"**Guideline 1:** Configure DLP rules to detect sensitive data exfiltration via email, such as personally identifiable information or proprietary data, using keyword and pattern matching. (Source: Google Workspace Security Best Practices)
+
+**Guideline 2:** Implement content inspection and encryption rules to identify encrypted data being sent outside the organization, which may indicate unauthorized data exfiltration. (Source: Google Workspace Security Best Practices)
+
+**Guideline 3:** Set up alerts for unusual email traffic patterns, like large volumes of emails containing sensitive data, to potential data exfiltration attempts. (Source: Google Workspace Security Best Practices)",10.77727151,0.133385897
+modular,M24,What MISP community threat intelligence feeds are most relevant for phishing defence?,"**Guideline 1:** Subscribe to OpenPhish, a community phishing intelligence feed, for automated phishing intelligence (Source: SANS Phishing Detection Lab)
+
+**Guideline 2:** Participate in the Malware Information Sharing Platform (MISP) for sharing and consuming phishing-related Indicators of Compromise (IOCs) (Source: SANS Phishing Detection Lab)
+
+**Guideline 3:** Consider integrating with feeds from CISA AIS, FS-ISAC, and sector-specific ISACs through STIX/TAXII for proactive blocking of known phishing infrastructure (Source: STIX/TAXII Threat Intelligence Sharing)",11.76170969,0.115919828
+modular,M25,How do we build a just-in-time phishing awareness training programme for employees?,"**Guideline 1:** Implement realistic phishing simulations that progress in difficulty over time, tailored to the current threat landscape. (Source: ENISA Phishing Awareness Guidelines)
+
+**Guideline 2:** Provide immediate teachable moments or just-in-time training upon an employee clicking a phishing simulation. (Source: ENISA Phishing Awareness Guidelines)
+
+**Guideline 3:** Emphasize the importance of reporting suspicious emails and reinforce a culture of skepticism, ensuring employees feel comfortable reporting without fear of reprimand. (Source: Rowden/CybersecurityQAA - Expert-validated cybersecurity advisory QA)",11.08009577,0.103416204
+modular,M26,What forensic memory analysis techniques help reconstruct phishing-related compromise timelines?,"**Guideline 1:** Utilize Volatility's timeliner plugin for temporal correlation in memory forensics to analyze timelines related to phishing compromises. (Source: AlicanKiraz0/Cybersecurity-Dataset-v1)
+
+**Guideline 2:** Examine network artifacts collected using Volatility's netscan plugin for potential suspicious connections, such as those with unusual ports or IP addresses, which may indicate phishing activities. (Source: AlicanKiraz0/Cybersecurity-Dataset-v1)
+
+**Guideline 3:** During the Identification phase of the SANS PICERL methodology, correlate email gateway alerts with endpoint telemetry and user-reported incidents to quickly identify phishing-related compromises. (Source: SANS SEC504 — Incident Response Methodology)",14.36615252,0.099884748
+modular,M27,How should we handle an ISO 27001 management review for phishing programme performance?,"**Guideline 1:** Gather phishing simulation results, trend analysis, incident statistics, changes to threats and vulnerabilities, audit findings related to email security controls, and employee feedback on security awareness training for the management review (Source: ISO 27001:2022)
+
+**Guideline 2:** Assess the risk of phishing attacks based on threat intelligence, considering the likelihood of an attack, potential impact of credential compromise or malware infection, and the effectiveness of current controls (Source: ISO 27001:2022 Clause 6)
+
+**Guideline 3:** Make resource allocation decisions for phishing controls and set objectives for the next period during the management review (Source: ISO 27001:2022)",12.58110833,0.106011629
+modular,M28,What endpoint protection configuration prevents script execution from phishing-delivered Office docs?,"**Guideline 1:** Enable script blocking for Office applications to prevent malicious PowerShell, VBScript, and JScript execution. (Source: CrowdStrike Falcon — Email Threat Protection)
+
+**Guideline 2:** Implement application whitelisting to block malicious payload execution in Office documents. (Source: ISO 27001:2022 Annex A.8.7)
+
+**Guideline 3:** Configure endpoint protection to scan email attachments, especially Office docs, for potential threats. (Source: ISO 27001:2022 Annex A.8.7)",10.33458066,0.100771427
+modular,M29,How do we perform a post-incident cost analysis of a phishing campaign?,"**Guideline 1:** Document the costs associated with the phishing incident, including direct costs such as system repairs, data recovery, and indirect costs like lost productivity and reputational damage. (Source: Not explicitly mentioned in the provided context, but implied in the need for post-incident review)
+
+**Guideline 2:** Compare the documented costs with the estimated costs of implementing additional controls that could have potentially prevented or detected the phishing incident faster. (Source: Not explicitly mentioned in the provided context, but implied in the post-incident review process)
+
+**Guideline 3:** Analyze the return on investment (ROI) of implementing new controls based on the cost comparison, and prioritize those with the highest potential to reduce future phishing risks. (Source: Not explicitly mentioned in the provided context, but implied in the need to translate findings into action items with owners tracked in a risk register)",14.31233788,0.099218369
+modular,M30,What key elements should we include in phishing incident breach notification templates?,"**Guideline 1:** Include pre-approved messaging templates for breach notifications in the phishing incident response playbook (Source: NIST SP 800-61r2 Appendix A)
+
+**Guideline 2:** Ensure the breach notification template includes details about the nature of the phishing incident, affected data types, and potential impact on users (Source: Implied from Context)
+
+**Guideline 3:** Comply with legal obligations by including GDPR Article 33 notification requirements in the breach notification template, such as the description of the nature of the personal data breach, the categories and approximate number of data subjects concerned, and the likely consequences of the personal data breach (Source: NIST SP 800-61r2 + GDPR Art 32)",12.93136263,0.107449055
+modular,M31,How should we address bias in our phishing knowledge base toward large enterprise guidance?,"**Guideline 1:** Review and update the phishing knowledge base with guidance tailored specifically for small and medium enterprises. (Source: Implicit, as this would balance the current bias towards large enterprise guidance.)
+
+**Guideline 2:** Implement case studies and examples from smaller organizations that have successfully mitigated phishing attacks in the updated knowledge base. (Source: Implicit, as this would provide relatable and applicable examples for smaller organizations.)
+
+**Guideline 3:** Collaborate with cybersecurity experts who specialize in securing small and medium enterprises to validate and contribute to the updated knowledge base. (Source: Implicit, as this would ensure the accuracy and relevance of the guidance for smaller organizations.)",11.40373659,0.114371538
+modular,M32,What are the supply chain phishing risks when key vendors have weaker email security postures?,"**Guideline 1:** Implement email filtering rules to flag unusual communication patterns from established vendors to detect potential supply chain phishing attempts. (Source: CISA Alert: Supply Chain Phishing)
+
+**Guideline 2:** Maintain a vendor communication baseline to identify deviations that may indicate a compromise of a key vendor's email security posture. (Source: CISA Alert: Supply Chain Phishing)
+
+**Guideline 3:** Require out-of-band verification for any unusual vendor requests to minimize the risk of supply chain phishing attacks. (Source: CISA Alert: Supply Chain Phishing)",10.5346334,0.124217033
+modular,M33,How do we measure and reduce dwell time for undetected phishing-related compromises?,"**Guideline 1:** Implement real-time monitoring and alerting systems on email gateways and endpoints to quickly identify phishing attempts. (Source: SANS SEC504 — Incident Response Methodology)
+
+**Guideline 2:** Establish a process for promptly investigating and analyzing email gateway alerts and user-reported incidents during the Identification phase of the PICERL methodology. (Source: SANS SEC504 — Incident Response Methodology)
+
+**Guideline 3:** Regularly review and optimize Mean Time to Detect (MTTD) by evaluating the efficiency of current threat detection mechanisms and improving them if necessary. (Source: SANS Incident Metrics)",11.70485306,0.110008955
